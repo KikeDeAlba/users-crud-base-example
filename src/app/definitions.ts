@@ -8,11 +8,6 @@ export interface ISystemUser<TData> {
   role: string;
   isActive: boolean;
   createdAt: Date;
-
-  // Métodos
-  getInfo(): string;
-
-  deactivate(): void;
 }
 
 // Interface para repositorio de usuarios
