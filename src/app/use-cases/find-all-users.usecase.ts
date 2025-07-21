@@ -1,13 +1,12 @@
-import { IUseCase } from '../definitions';
+import { ISystemUser, IUseCase, IUserRepository } from '../definitions';
 import { UserEntity } from '../entities/user.entity';
-import { UserRepository } from '../repositories/user.repository';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class FindAllUsersUsecase implements IUseCase<void, UserEntity[]> {
-  constructor(private readonly repository: UserRepository) {}
+export class FindAllUsersUsecase implements IUseCase<void, ISystemUser[]> {
+  constructor(private readonly repository: IUserRepository) {}
 
-  execute(): UserEntity[] {
+  execute(): ISystemUser[] {
     return this.repository.findAll();
   }
 }

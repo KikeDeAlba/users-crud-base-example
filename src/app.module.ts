@@ -2,8 +2,8 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { FindAllUsersUsecase } from './app/use-cases/find-all-users.usecase';
-import { UserRepository } from './app/repositories/user.repository';
-import { CreateUserUsecase } from './app/use-cases/create-user.usecase';
+import { UserRepositoryProvider } from './app/providers/user-repository.provider';
+import { CreateUserUseCaseProvider } from './app/providers/create-user-use-case.provider';
 
 @Module({
   imports: [],
@@ -11,8 +11,8 @@ import { CreateUserUsecase } from './app/use-cases/create-user.usecase';
   providers: [
     AppService,
     FindAllUsersUsecase,
-    UserRepository,
-    CreateUserUsecase,
+    UserRepositoryProvider,
+    CreateUserUseCaseProvider,
   ],
 })
 export class AppModule {}

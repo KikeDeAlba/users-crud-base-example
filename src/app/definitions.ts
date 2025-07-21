@@ -1,28 +1,31 @@
-export interface ISystemUser<TData> {
+export interface ISystemUser {
   id: string;
   type: 'premium' | 'base' | 'standard' | 'admin';
   name: string;
   email: `${string}@${string}`;
   age: number;
-  data: TData;
+  data: object;
   role: string;
   isActive: boolean;
   createdAt: Date;
 }
 
 // Interface para repositorio de usuarios
-export interface IUserRepository<TUser> {
-  create(user: TUser): void;
+export abstract class IUserRepository {
+  abstract create(user: ISystemUser): void;
 
-  findById(id: string): TUser | undefined;
+  abstract findById(id: string): ISystemUser | undefined;
 
-  update(id: string, userData: Partial<TUser>): boolean;
+  abstract update(id: string, userData: Partial<ISystemUser>): boolean;
 
-  delete(id: string): boolean;
+  abstract delete(id: string): boolean;
 
-  findAll(): TUser[];
+  abstract findAll(): ISystemUser[];
 
-  findByEmailAndRole(email: string, role: string): TUser | undefined;
+  abstract findByEmailAndRole(
+    email: string,
+    role: string,
+  ): ISystemUser | undefined;
 }
 
 // Interface para casos de uso

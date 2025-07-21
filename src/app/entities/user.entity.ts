@@ -15,7 +15,7 @@ export class UserData {
   phoneNumber: string;
 }
 
-export class UserEntity implements ISystemUser<UserData> {
+export class UserEntity implements ISystemUser {
   constructor(data: Partial<UserEntity>) {
     Object.assign(this, data);
   }

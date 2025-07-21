@@ -4,12 +4,11 @@ import {
   Controller,
   Get,
   Post,
-  Put,
 } from '@nestjs/common';
 import { AppService } from './app.service';
 import { UserEntity } from './app/entities/user.entity';
 import { FindAllUsersUsecase } from './app/use-cases/find-all-users.usecase';
-import { CreateUserUsecase } from './app/use-cases/create-user.usecase';
+import { CreateUserUseCase } from './app/use-cases/create-user-impl.usecase';
 import { plainToClass } from '@nestjs/class-transformer';
 import { validateSync } from '@nestjs/class-validator';
 
@@ -18,7 +17,7 @@ export class AppController {
   constructor(
     private readonly appService: AppService,
     private readonly findAllUsersUserCase: FindAllUsersUsecase,
-    private readonly createUserUseCase: CreateUserUsecase,
+    private readonly createUserUseCase: CreateUserUseCase,
   ) {}
 
   @Get()
@@ -27,7 +26,7 @@ export class AppController {
   }
 
   @Get('/users')
-  getUsers(): UserEntity[] {
+  getUsers() {
     return this.findAllUsersUserCase.execute();
   }
 
